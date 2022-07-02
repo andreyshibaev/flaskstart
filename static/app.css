@@ -1,0 +1,23 @@
+body {
+  background: #fff4eb;
+}
+body h1 {
+  color: #0a2d47;
+}
+
+header {
+  background: #022829;
+}
+header h1 {
+  color: #ffffe9;
+}
+header h5 {
+  color: #ffffe9;
+}
+
+footer {
+  background: #022829;
+}
+footer h3 {
+  color: #ffffe9;
+}

@@ -18,8 +18,6 @@ from flask_admin import Admin
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///demo.db'
     db.init_app(app)
     migrate.init_app(app, db)
     app.register_blueprint(newapp)
@@ -27,7 +25,7 @@ def create_app(config_class=Config):
     admin = Admin(app, name='My admin')
     return app
 
-from apps.newapp import models  
+# from apps.newapp import models  
 
 if __name__ == "__main__":
     create_app().run()
