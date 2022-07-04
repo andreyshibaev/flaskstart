@@ -1,1 +1,17 @@
-python -c 'import secrets; print(secrets.token_hex())'
+## Flask starter
+- if Windows 10
+- git clone https://github.com/andreyshibaev/flaskstart.git
+- cd flaskstart
+- py -m venv appvenv
+- appvenv\Scripts\activate.bat
+- pip install -r requirements.txt
+- create .env in the root folder
+- in .env add constant: DEBUG=True, FLASK_ENV=development, SECRET_KEY= ' '
+- in terminal add command --> python -c 'import secrets; print(secrets.token_hex())'
+- paste the generated key in file.env in constant SECRET_KEY = 'generated key'
+- npm install
+- npx mix
+- flask db init
+- flask db migrate
+- flask db upgrade
+- flask run
