@@ -1,6 +1,6 @@
 from flask import Flask
 from sqlalchemy import create_engine
-from apps.newapp.views import newapp
+from apps.homeapp.views import homeapp
 from apps.profile.views import profile
 from database.database import db
 from flask_migrate import Migrate
@@ -24,7 +24,7 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
     db.init_app(app)
     migrate.init_app(app, db)
-    app.register_blueprint(newapp)
+    app.register_blueprint(homeapp)
     app.register_blueprint(profile)
     app.config['FLASK_ADMIN_SWATCH'] = 'superhero'
     admin = Admin(app, name='My admin', template_mode='bootstrap4')

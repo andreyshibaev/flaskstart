@@ -8,20 +8,18 @@ import os
 class Config(object):
     DEBUG = os.environ.get("DEBUG")
     SECRET_KEY = os.environ.get("SECRET_KEY")
+    SQLALCHEMY_ECHO = True
+    ENV=os.environ.get("FLASK_ENV")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = 'sqlite:///demo.db'
     # SQLALCHEMY_DATABASE_URI = 'mysql+mysqldb://root:@localhost/flaskstart'
-    SECURITY_PASSWORD_SALT = '$&#)('
+    SECURITY_PASSWORD_SALT = '$&#)(^?@'
     SECURITY_PASSWORD_HASH = 'sha512_crypt'
 
 
 class ProductionConfig(Config):
-    DEBUG = False
+    pass
 
 
 class DevelopmentConfig(Config):
-    DEBUG = True
-    SQLALCHEMY_ECHO = True
-    ENV=os.environ.get("FLASK_ENV")
-    # DEBUG = os.environ.get("DEBUG")
-    SECRET_KEY = os.environ.get("SECRET_KEY")
+    pass
