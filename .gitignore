@@ -172,3 +172,4 @@ cython_debug/
 
 # npm packages
 node_modules/
+migrations/
