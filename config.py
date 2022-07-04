@@ -9,8 +9,8 @@ class Config(object):
     DEBUG = os.environ.get("DEBUG")
     SECRET_KEY = os.environ.get("SECRET_KEY")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    # SQLALCHEMY_DATABASE_URI = 'sqlite:///demo.db'
-    SQLALCHEMY_DATABASE_URI = 'mysql+mysqldb://root:@localhost/flaskstart'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///demo.db'
+    # SQLALCHEMY_DATABASE_URI = 'mysql+mysqldb://root:@localhost/flaskstart'
     SECURITY_PASSWORD_SALT = '$&#)('
     SECURITY_PASSWORD_HASH = 'sha512_crypt'
 

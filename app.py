@@ -2,7 +2,7 @@ from flask import Flask
 from sqlalchemy import create_engine
 from apps.newapp.views import newapp
 from apps.profile.views import profile
-from flask_sqlalchemy import SQLAlchemy
+from database.database import db
 from flask_migrate import Migrate
 from config import Config
 from flask_mysqldb import MySQL
@@ -11,8 +11,6 @@ from flask_security import Security, SQLAlchemyUserDatastore
 
 
 migrate = Migrate()
-db = SQLAlchemy()
-
 engine = create_engine(Config.SQLALCHEMY_DATABASE_URI)
 
 # for admin
