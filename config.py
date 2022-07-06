@@ -14,7 +14,7 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///demo.db'
     # SQLALCHEMY_DATABASE_URI = 'mysql+mysqldb://root:@localhost/flaskstart'
     SECURITY_PASSWORD_SALT = '$&#)(^?@'
-    SECURITY_PASSWORD_HASH = 'sha512_crypt'
+    SECURITY_PASSWORD_HASH = 'bcrypt'
 
 
 class ProductionConfig(Config):

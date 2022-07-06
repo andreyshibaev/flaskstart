@@ -6,8 +6,9 @@ from database.database import db
 from flask_migrate import Migrate
 from config import Config
 from flask_mysqldb import MySQL
+from flask_debugtoolbar import DebugToolbarExtension
 
-from flask_security import Security, SQLAlchemyUserDatastore
+from flask_security import Security, SQLAlchemyUserDatastore, hash_password, current_user
 
 
 migrate = Migrate()
@@ -32,16 +33,22 @@ def create_app(config_class=Config):
     admin.add_view(ModelView(Role, db.session))
     user_datastore = SQLAlchemyUserDatastore(db, User, Role)
     security = Security(app, user_datastore)
-    def updatedb():
-        cur = MySQL.connection.cursor()
-        cur.execute('')
-        cur.fetchall()
-        cur.close()
     # @app.before_first_request
     # def create_user():
     #     db.create_all()
-    #     user_datastore.create_user(email='user@mail.ru', password='000')
+    #     if not user_datastore.find_user(email="test@me.com"):
+    #         user_datastore.create_user(email="test@me.com", password=hash_password("password"))
     #     db.session.commit()
+    # def updatedb():
+    #     cur = MySQL.connection.cursor()
+    #     cur.execute('')
+    #     cur.fetchall()
+    #     cur.close()
+    
+    #debugtoolbar
+    app.config['DEBUG_TB_PROFILER_ENABLED'] = False
+    toolbar = DebugToolbarExtension()
+    toolbar.init_app(app)
     return app
 
 from apps.profile import models  
