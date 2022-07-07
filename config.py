@@ -18,6 +18,7 @@ class Config(object):
     FLASK_ADMIN_SWATCH = 'superhero'
     DEBUG_TB_PROFILER_ENABLED = False
     DEBUG_TB_INTERCEPT_REDIRECTS = False
+    BABEL_DEFAULT_LOCALE = 'ru'
 
 class ProductionConfig(Config):
     pass

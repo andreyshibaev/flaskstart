@@ -8,7 +8,7 @@ from config import Config
 # from flask_mysqldb import MySQL
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_security import Security, SQLAlchemyUserDatastore, hash_password
-
+from flask_babelex import Babel
 
 # for admin
 from flask_admin import Admin
@@ -37,7 +37,7 @@ def create_app(config_class=Config):
     admin.add_view(RoleView(Role, db.session))
     user_datastore = SQLAlchemyUserDatastore(db, User, Role)
     security = Security(app, user_datastore)
-
+    babel = Babel(app)
     # create test admin user
 
     # @app.before_first_request

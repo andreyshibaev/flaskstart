@@ -17,6 +17,9 @@ class AccessCloseView():
 class UserView(AccessCloseView, ModelView):
     def on_model_change(self, view, model, is_created):
         model.password = hash_password(model.password)
+    # if you want create or edit records in modal window
+    create_modal = True
+    edit_modal = True
 
     column_display_pk = True
     column_labels = {

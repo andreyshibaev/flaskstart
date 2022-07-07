@@ -20,4 +20,4 @@ class AdminView(AdminIndexView):
                 current_user.has_role('admin')
         )
     def inaccessible_callback(self, name, **kwargs):
-        return redirect(url_for('security.login', next=request.url))
+        return redirect(url_for('security.login', next=request.url))  
