@@ -1,6 +1,18 @@
 from flask_admin.contrib.sqla import ModelView
+from flask import request, redirect, url_for
+from flask_security import current_user
 
-class UserView(ModelView):
+class AccessCloseView():
+    def is_accessible(self):
+        return (current_user.is_active and
+                current_user.is_authenticated and
+                current_user.has_role('admin')
+        )
+    def inaccessible_callback(self, name, **kwargs):
+        return redirect(url_for('security.login', next=request.url))
+
+
+class UserView(AccessCloseView, ModelView):
     column_display_pk = True
     column_labels = {
         'id': 'id',
@@ -14,7 +26,7 @@ class UserView(ModelView):
     column_searchable_list = ['email', 'username']
     column_filters = ['email', 'username']
 
-class RoleView(ModelView):
+class RoleView(AccessCloseView, ModelView):
     column_display_pk = True
     column_labels = {
         'id': 'id',

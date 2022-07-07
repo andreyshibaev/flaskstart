@@ -7,13 +7,14 @@ from flask_migrate import Migrate
 from config import Config
 # from flask_mysqldb import MySQL
 from flask_debugtoolbar import DebugToolbarExtension
-from flask_security import Security, SQLAlchemyUserDatastore, hash_password, current_user
+from flask_security import Security, SQLAlchemyUserDatastore, hash_password
 
 
 # for admin
 from flask_admin import Admin
 from apps.profile.admin import UserView, RoleView
 from apps.profile.models import User, Role
+from apps.profile.views import AdminView
 
 from apps.profile import models 
 
@@ -30,7 +31,8 @@ def create_app(config_class=Config):
     db.init_app(app)
     app.register_blueprint(homeapp)
     app.register_blueprint(profile)
-    admin = Admin(app, name='My admin', template_mode='bootstrap4')
+    admin = Admin(app, name='My admin', template_mode='bootstrap4', index_view=AdminView())
+    # admin = Admin(app, name='My admin', template_mode='bootstrap4')
     admin.add_view(UserView(User, db.session))
     admin.add_view(RoleView(Role, db.session))
     user_datastore = SQLAlchemyUserDatastore(db, User, Role)
