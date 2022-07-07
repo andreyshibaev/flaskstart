@@ -1,6 +1,8 @@
 from flask_admin.contrib.sqla import ModelView
 from flask import request, redirect, url_for
 from flask_security import current_user
+from flask_security import hash_password
+
 
 class AccessCloseView():
     def is_accessible(self):
@@ -13,6 +15,9 @@ class AccessCloseView():
 
 
 class UserView(AccessCloseView, ModelView):
+    def on_model_change(self, view, model, is_created):
+        model.password = hash_password(model.password)
+
     column_display_pk = True
     column_labels = {
         'id': 'id',
@@ -20,6 +25,8 @@ class UserView(AccessCloseView, ModelView):
         'email': 'Почта',
         'password': 'Пароль',
         'fs_uniquifier': 'Роль',
+        'roles': 'Роли',
+        
     }
 
     column_list = ['id', 'username', 'email', 'roles']
@@ -31,7 +38,8 @@ class RoleView(AccessCloseView, ModelView):
     column_labels = {
         'id': 'id',
         'name': 'Роль',
-
+        'users': 'Пользователи',
     }
+
     column_list = ['id', 'name',]
     column_searchable_list = ['name',]    

@@ -10,9 +10,9 @@ def profile_account():
     return render_template('profile.html')
 
 
-
 from flask_admin import AdminIndexView
 from flask_security import current_user
+
 class AdminView(AdminIndexView):
     def is_accessible(self):
         return (current_user.is_active and
@@ -20,4 +20,4 @@ class AdminView(AdminIndexView):
                 current_user.has_role('admin')
         )
     def inaccessible_callback(self, name, **kwargs):
-        return redirect(url_for('security.login', next=request.url)) 
+        return redirect(url_for('security.login', next=request.url))
