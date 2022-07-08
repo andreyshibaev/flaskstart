@@ -15,12 +15,20 @@ class AccessCloseView():
 
 
 class UserView(AccessCloseView, ModelView):
+
+    # def create_form(self, obj=None):
+    #     return super(UserView, self).create_form(obj)
+
+    # def edit_form(self, obj=None):
+    #     return super(UserView, self).edit_form(obj)
+
     def on_model_change(self, view, model, is_created):
         model.password = hash_password(model.password)
+
     # if you want create or edit records in modal window
     create_modal = True
     edit_modal = True
-
+    form_excluded_columns = ('confirmed_at', 'last_login_ip', 'last_login_at', 'current_login_at', 'current_login_ip', 'tf_primary_method',)
     column_display_pk = True
     column_labels = {
         'id': 'id',
@@ -29,7 +37,7 @@ class UserView(AccessCloseView, ModelView):
         'password': 'Пароль',
         'fs_uniquifier': 'Роль',
         'roles': 'Роли',
-        
+        'active': 'Активный',
     }
 
     column_list = ['id', 'username', 'email', 'roles']
@@ -38,10 +46,14 @@ class UserView(AccessCloseView, ModelView):
 
 class RoleView(AccessCloseView, ModelView):
     column_display_pk = True
+
     column_labels = {
         'id': 'id',
         'name': 'Роль',
         'users': 'Пользователи',
+        'description': 'Описание',
+        'permissions': 'Разрешения',
+        # 'update datetime': 'Дата обновления',
     }
 
     column_list = ['id', 'name',]

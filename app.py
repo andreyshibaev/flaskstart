@@ -31,13 +31,13 @@ def create_app(config_class=Config):
     db.init_app(app)
     app.register_blueprint(homeapp)
     app.register_blueprint(profile)
-    admin = Admin(app, name='My admin', template_mode='bootstrap4', index_view=AdminView())
-    # admin = Admin(app, name='My admin', template_mode='bootstrap4')
+    admin = Admin(app, name='Управление сайтом', template_mode='bootstrap4', index_view=AdminView())
     admin.add_view(UserView(User, db.session))
     admin.add_view(RoleView(Role, db.session))
     user_datastore = SQLAlchemyUserDatastore(db, User, Role)
     security = Security(app, user_datastore)
     babel = Babel(app)
+
     # create test admin user
 
     # @app.before_first_request
