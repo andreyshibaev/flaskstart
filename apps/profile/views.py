@@ -1,4 +1,4 @@
-from flask import Blueprint, request, url_for, redirect, render_template
+from flask import Blueprint, request, url_for, redirect, render_template, flash
 
 profile = Blueprint('profile', __name__, template_folder="templates/profile")
 
@@ -20,4 +20,5 @@ class AdminView(AdminIndexView):
                 current_user.has_role('admin')
         )
     def inaccessible_callback(self, name, **kwargs):
-        return redirect(url_for('security.login', next=request.url))  
+        return redirect(url_for('security.login', next=request.url)) 
+

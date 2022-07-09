@@ -15,6 +15,8 @@ class Config(object):
     # SQLALCHEMY_DATABASE_URI = 'mysql+mysqldb://root:@localhost/flaskstart'
     SECURITY_PASSWORD_SALT = '$&#)(^?@'
     SECURITY_PASSWORD_HASH = 'bcrypt'
+    SECURITY_REGISTERABLE = True
+    SECURITY_SEND_REGISTER_EMAIL = False
     FLASK_ADMIN_SWATCH = 'superhero'
     DEBUG_TB_PROFILER_ENABLED = False
     DEBUG_TB_INTERCEPT_REDIRECTS = False

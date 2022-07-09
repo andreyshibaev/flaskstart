@@ -11,10 +11,12 @@
           </li>
           {% if current_user.has_role('admin') %}
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ url_for('profile.profile_account') }}">Профиль</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{ url_for('admin.index') }}">Админка</a>
+          </li>
+          {% endif %}
+          {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('profile.profile_account') }}">Профиль</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{ url_for('security.logout') }}">Выход</a>
@@ -23,8 +25,10 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{ url_for('security.login') }}">Войти</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('security.register') }}">Регистрация</a>
+          </li>
           {% endif %}
-
         </ul>
       </div>
     </div>
