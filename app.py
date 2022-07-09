@@ -17,7 +17,6 @@ from apps.profile.models import User, Role
 from apps.profile.views import AdminView
 
 from apps.profile import models
-from apps.profile.forms import RegisterForm
 
 # variables
 engine = create_engine(Config.SQLALCHEMY_DATABASE_URI)
@@ -36,7 +35,7 @@ def create_app(config_class=Config):
     admin.add_view(UserView(User, db.session))
     admin.add_view(RoleView(Role, db.session))
     user_datastore = SQLAlchemyUserDatastore(db, User, Role)
-    security = Security(app, user_datastore, register_form=RegisterForm)
+    security = Security(app, user_datastore)
     babel = Babel(app)
 
     # create test admin user

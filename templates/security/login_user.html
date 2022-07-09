@@ -1,5 +1,9 @@
 {% extends "security/base.html" %}
 {% from "security/_macros.html" import render_field_with_errors, render_field, render_field_errors %}
+{% block title %}
+Форма входа
+{{ title|default }}
+{% endblock title %}
 {% block content %}
 <div class="container">
   {% include "security/_messages.html" %}

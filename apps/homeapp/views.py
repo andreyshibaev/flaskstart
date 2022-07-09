@@ -3,5 +3,5 @@ homeapp = Blueprint('homeapp', __name__, template_folder="templates/homeapp")
 
 @homeapp.route("/")
 def home():
-    title = 'Home page'
+    title = 'Главная страница'
     return render_template('home.html', title=title)

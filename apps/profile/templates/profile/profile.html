@@ -6,7 +6,20 @@
 
 {% block content %}
 <div class="container">
-    <h1>Личный кабинет {{ current_user.email }}</h1>
-
+    <h1>Личный кабинет</h1>
+    <h3>
+        {% if current_user.username == None %}
+        Пользователь: {{ current_user.email }}
+        {% else %}
+        {{ current_user.username }}
+        {% endif %}
+    </h3>
+    <div>
+        {% if current_user.has_role('admin') %}
+        <span class="badge rounded-pill text-bg-success">Есть права администратора</span>
+        {% else %}
+        <span class="badge rounded-pill text-bg-warning">Нет прав администратора</span>
+        {% endif %}
+    </div>
 </div>
 {% endblock content %}

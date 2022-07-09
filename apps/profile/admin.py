@@ -15,13 +15,6 @@ class AccessCloseView():
 
 
 class UserView(AccessCloseView, ModelView):
-
-    # def create_form(self, obj=None):
-    #     return super(UserView, self).create_form(obj)
-
-    # def edit_form(self, obj=None):
-    #     return super(UserView, self).edit_form(obj)
-
     def on_model_change(self, view, model, is_created):
         model.password = hash_password(model.password)
 

@@ -17,10 +17,14 @@ class Config(object):
     SECURITY_PASSWORD_HASH = 'bcrypt'
     SECURITY_REGISTERABLE = True
     SECURITY_SEND_REGISTER_EMAIL = False
+    SECURITY_POST_LOGIN_VIEW = '/profile'
+    SECURITY_POST_REGISTER_VIEW = '/profile'
+    SECURITY_USERNAME_ENABLE = False
     FLASK_ADMIN_SWATCH = 'superhero'
     DEBUG_TB_PROFILER_ENABLED = False
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     BABEL_DEFAULT_LOCALE = 'ru'
+    
 
 class ProductionConfig(Config):
     pass
