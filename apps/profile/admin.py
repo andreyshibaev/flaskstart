@@ -21,7 +21,7 @@ class UserView(AccessCloseView, ModelView):
     # if you want create or edit records in modal window
     create_modal = True
     edit_modal = True
-    form_excluded_columns = ('confirmed_at', 'last_login_ip', 'last_login_at', 'current_login_at', 'current_login_ip', 'tf_primary_method',)
+    form_excluded_columns = ('confirmed_at', 'last_login_ip', 'last_login_at', 'current_login_at', 'current_login_ip', 'tf_primary_method', 'tf_totp_secret', 'tf_phone_number', 'us_totp_secrets', 'us_phone_number', 'login_count',)
     column_display_pk = True
     column_labels = {
         'id': 'id',
@@ -40,13 +40,19 @@ class UserView(AccessCloseView, ModelView):
 class RoleView(AccessCloseView, ModelView):
     column_display_pk = True
 
+    column_choices = {
+        'role': [
+            ('role', 'name'),
+        ]
+    }
+
     column_labels = {
         'id': 'id',
         'name': 'Роль',
         'users': 'Пользователи',
         'description': 'Описание',
         'permissions': 'Разрешения',
-        # 'update datetime': 'Дата обновления',
+          # 'update datetime': 'Дата обновления',
     }
 
     column_list = ['id', 'name',]

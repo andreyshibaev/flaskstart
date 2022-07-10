@@ -6,20 +6,25 @@
 
 {% block content %}
 <div class="container">
-    <h1>Личный кабинет</h1>
+    {% include "security/_messages.html" %}
+    <h1 class="py-3">Личный кабинет</h1>
     <h3>
         {% if current_user.username == None %}
         Пользователь: {{ current_user.email }}
         {% else %}
-        {{ current_user.username }}
+        Пользователь: {{ current_user.username }}
         {% endif %}
     </h3>
+    <p>Почта: {{ current_user.email }}</p>
     <div>
         {% if current_user.has_role('admin') %}
         <span class="badge rounded-pill text-bg-success">Есть права администратора</span>
         {% else %}
         <span class="badge rounded-pill text-bg-warning">Нет прав администратора</span>
         {% endif %}
+    </div>
+    <div class="change_password mt-5">
+        <a class="btn btn-info" href="{{ url_for('security.change_password') }}">Изменить пароль</a>
     </div>
 </div>
 {% endblock content %}
