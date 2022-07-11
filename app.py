@@ -20,11 +20,11 @@ from apps.profile import models
 
 # from flask_postgres import init_db_callback
 
+
 # variables
 engine = create_engine(Config.SQLALCHEMY_DATABASE_URI)
 migrate = Migrate()
 toolbar = DebugToolbarExtension()
-
 
 def create_app(config_class=Config):
     app = Flask(__name__, instance_relative_config=True)

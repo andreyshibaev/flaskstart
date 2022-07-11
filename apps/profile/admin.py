@@ -14,6 +14,7 @@ class AccessCloseView():
         return redirect(url_for('security.login', next=request.url))
 
 
+
 class UserView(AccessCloseView, ModelView):
     def on_model_change(self, view, model, is_created):
         model.password = hash_password(model.password)
@@ -38,9 +39,8 @@ class UserView(AccessCloseView, ModelView):
         'User': 'Пользователь',
         'roles': 'Роли',
         'active': 'Активный',
-        # 'role': 'Роль',
     }
-    column_editable_list = ('roles',)
+    # column_editable_list = ('roles',)
     column_list = ['id', 'username', 'email', 'roles',]
     column_searchable_list = ['email', 'username',]
     column_filters = ['email', 'username',]
@@ -57,5 +57,5 @@ class RoleView(AccessCloseView, ModelView):
           # 'update datetime': 'Дата обновления',
     }
     column_list = ['id', 'name',]
-    column_editable_list = ('name',)
-    column_searchable_list = ['name',]    
+    # column_editable_list = ('name',)
+    column_searchable_list = ['name',]       

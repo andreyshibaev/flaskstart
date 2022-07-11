@@ -26,11 +26,18 @@ class Config(object):
     DEBUG_TB_PROFILER_ENABLED = False
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     BABEL_DEFAULT_LOCALE = 'ru'
-    
-
-class ProductionConfig(Config):
-    pass
 
 
 class DevelopmentConfig(Config):
-    pass
+    TESTING = False
+    DEBUG = True
+
+class ProductionConfig(Config):
+    TESTING = False
+    DEBUG = False
+    DB_USER = os.environ.get('POSTGRES_USER')
+    DB_PASS = os.environ.get('POSTGRES_PASSWORD')
+    DB_HOST = os.environ.get('POSTGRES_HOST')
+    DB_PORT = os.environ.get('POSTGRES_PORT') or 5432
+    DB_NAME = os.environ.get('POSTGRES_DB')
+    SQLALCHEMY_DATABASE_URI = f'postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}'
