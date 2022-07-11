@@ -18,6 +18,8 @@ from apps.profile.views import AdminView
 
 from apps.profile import models
 
+# from flask_postgres import init_db_callback
+
 # variables
 engine = create_engine(Config.SQLALCHEMY_DATABASE_URI)
 migrate = Migrate()
@@ -28,6 +30,11 @@ def create_app(config_class=Config):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(config_class)
     migrate.init_app(app, db)
+    # for postgres data base
+    # @init_db_callback
+    # def init_db(app, db):
+    #     db.create_all()
+    # end for postgres data base    
     db.init_app(app)
     app.register_blueprint(homeapp)
     app.register_blueprint(profile)

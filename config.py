@@ -13,6 +13,7 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = 'sqlite:///demo.db'
     # SQLALCHEMY_DATABASE_URI = 'mysql+mysqldb://root:@localhost/flaskstart'
+    # SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:rewq4321@localhost:5432/flaskstart'
     SECURITY_PASSWORD_SALT = '$&#)(^?@'
     SECURITY_PASSWORD_HASH = 'bcrypt'
     SECURITY_REGISTERABLE = True
