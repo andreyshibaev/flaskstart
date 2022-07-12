@@ -15,7 +15,10 @@ class Config(object):
     # SQLALCHEMY_DATABASE_URI = 'mysql+mysqldb://root:@localhost/flaskstart'
     # SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:rewq4321@localhost:5432/flaskstart'
     SECURITY_PASSWORD_SALT = '$&#)(^?@'
+    SECURITY_FLASH_MESSAGES = True
     SECURITY_PASSWORD_HASH = 'bcrypt'
+    SECURITY_PASSWORD_CHECK_BREACHED = 'strict'
+    # SECURITY_EMAIL_SENDER = 'demo@mail.ru'
     SECURITY_REGISTERABLE = True
     SECURITY_SEND_REGISTER_EMAIL = False
     SECURITY_POST_LOGIN_VIEW = '/profile'
@@ -26,6 +29,13 @@ class Config(object):
     DEBUG_TB_PROFILER_ENABLED = False
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     BABEL_DEFAULT_LOCALE = 'ru'
+
+    MAIL_SERVER=os.environ.get("MAIL_SERVER")
+    MAIL_PORT=os.environ.get("MAIL_PORT")
+    MAIL_USE_SSL=os.environ.get("MAIL_USE_SSL")
+    MAIL_USE_TLS=os.environ.get("MAIL_USE_TLS")
+    MAIL_USERNAME=os.environ.get("MAIL_USERNAME")
+    MAIL_PASSWORD=os.environ.get("MAIL_PASSWORD")
 
 
 class DevelopmentConfig(Config):

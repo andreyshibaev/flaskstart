@@ -9,7 +9,7 @@ from config import Config
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_security import Security, SQLAlchemyUserDatastore, hash_password
 from flask_babelex import Babel
-
+from flask_mail import Mail
 # for admin
 from flask_admin import Admin
 from apps.profile.admin import UserView, RoleView
@@ -25,11 +25,13 @@ from apps.profile import models
 engine = create_engine(Config.SQLALCHEMY_DATABASE_URI)
 migrate = Migrate()
 toolbar = DebugToolbarExtension()
+mail = Mail()
 
 def create_app(config_class=Config):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(config_class)
     migrate.init_app(app, db)
+    mail.init_app(app)
     # for postgres data base
     # @init_db_callback
     # def init_db(app, db):
