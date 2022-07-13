@@ -20,7 +20,6 @@ from apps.profile import models
 
 # from flask_postgres import init_db_callback
 
-
 # variables
 engine = create_engine(Config.SQLALCHEMY_DATABASE_URI)
 migrate = Migrate()
