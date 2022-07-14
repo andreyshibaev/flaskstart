@@ -6,17 +6,45 @@
 
 {% block content %}
     <div class="container">
+        <h1>Форма связи</h1>
+    {% if success %}
+        <p class="alert alert-success">Спасибо за обратную связь!</p>
+    {% endif %}
+    
+		{% for message  in form.name.errors %}
+        <div class="flash alert alert-danger">{{ message }}</div>
+     {% endfor %}
+
+     {% for message  in form.email.errors %}
+        <div class="flash alert alert-danger">{{ message }}</div>
+     {% endfor %}
+
+     {% for message  in form.subject.errors %}
+        <div class="flash alert alert-danger">{{ message }}</div>
+     {% endfor %}
+
+     {% for message  in form.message.errors %}
+        <div class="flash alert alert-danger">{{ message }}</div>
+     {% endfor %}
         <h1>{{ title }}</h1>
-        <form method="POST" action="">
-            {{ cform.csrf_token }}
-            {{ cform.name.label }} 
-            {{ cform.name }}<br>
-            {{ cform.email.label }}
-            {{ cform.email }}<br>
-            {{ cform.message.label }}
-            {{ cform.message }}<br>
-            {{ cform.submit.label }}
-            {{ cform.submit }}<br>
-        </form>
+		<form action="{{ url_for('contacts.show_contact_form') }}" method="POST">
+			
+
+			{{ form.hidden_tag() }}
+
+			{{ form.name.label() }}
+			{{ form.name(class="form-control") }}
+
+			{{ form.email.label(class="") }}
+			{{ form.email(class="form-control") }}
+
+			{{ form.subject.label(class="") }}
+			{{ form.subject(class="form-control") }}
+
+			{{ form.message.label(class="") }}
+			{{ form.message(class="form-control") }}
+
+			{{ form.submit(class="btn btn-outline-success") }}
+		</form>
     </div>
 {% endblock content %}

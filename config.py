@@ -18,7 +18,7 @@ class Config(object):
     SECURITY_FLASH_MESSAGES = True
     SECURITY_PASSWORD_HASH = 'bcrypt'
     SECURITY_PASSWORD_CHECK_BREACHED = 'strict'
-    SECURITY_EMAIL_SENDER = 'webmaster@sibchar.ru'
+    SECURITY_EMAIL_SENDER = 'demo@test.ru'
     SECURITY_CONFIRMABLE = False
     SECURITY_REGISTERABLE = True
     SECURITY_SEND_REGISTER_EMAIL = False
@@ -35,7 +35,7 @@ class Config(object):
     MAIL_USE_SSL=False
     MAIL_USE_TLS=True
     MAIL_DEBUG = True
-    MAIL_DEFAULT_SENDER = 'webmaster@sibchar.ru'
+    MAIL_DEFAULT_SENDER = 'demo@test.ru'
     MAIL_SERVER=os.environ.get("MAIL_SERVER")
     MAIL_PORT=os.environ.get("MAIL_PORT")
     MAIL_USERNAME=os.environ.get("MAIL_USERNAME")
