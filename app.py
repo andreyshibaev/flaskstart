@@ -2,6 +2,7 @@ from flask import Flask
 from sqlalchemy import create_engine
 from apps.homeapp.views import homeapp
 from apps.profile.views import profile
+from apps.contacts.views import contacts
 from database.database import db
 from flask_migrate import Migrate
 from config import Config
@@ -15,7 +16,7 @@ from flask_admin import Admin
 from apps.profile.admin import UserView, RoleView
 from apps.profile.models import User, Role
 from apps.profile.views import AdminView
-
+from flask_wtf.csrf import CSRFProtect
 from apps.profile import models
 
 # from flask_postgres import init_db_callback
@@ -25,12 +26,14 @@ engine = create_engine(Config.SQLALCHEMY_DATABASE_URI)
 migrate = Migrate()
 toolbar = DebugToolbarExtension()
 mail = Mail()
+csrf = CSRFProtect()
 
 def create_app(config_class=Config):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(config_class)
     migrate.init_app(app, db)
     mail.init_app(app)
+    csrf.init_app(app)
     # for postgres data base
     # @init_db_callback
     # def init_db(app, db):
@@ -39,6 +42,7 @@ def create_app(config_class=Config):
     db.init_app(app)
     app.register_blueprint(homeapp)
     app.register_blueprint(profile)
+    app.register_blueprint(contacts)
     admin = Admin(app, name='Управление сайтом', template_mode='bootstrap4', index_view=AdminView())
     admin.add_view(UserView(User, db.session))
     admin.add_view(RoleView(Role, db.session))

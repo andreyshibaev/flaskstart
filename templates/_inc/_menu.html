@@ -9,6 +9,9 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{ url_for('homeapp.home') }}">Главная</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('contacts.show_contact_form') }}">Контакты</a>
+          </li>
           {% if current_user.has_role('admin') %}
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{ url_for('admin.index') }}">Админка</a>

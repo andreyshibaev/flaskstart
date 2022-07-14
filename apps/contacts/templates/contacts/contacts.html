@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <form method="POST" action="">
+            {{ cform.csrf_token }}
+            {{ cform.name.label }} 
+            {{ cform.name }}<br>
+            {{ cform.email.label }}
+            {{ cform.email }}<br>
+            {{ cform.message.label }}
+            {{ cform.message }}<br>
+            {{ cform.submit.label }}
+            {{ cform.submit }}<br>
+        </form>
+    </div>
+{% endblock content %}
