@@ -7,7 +7,7 @@
 {% block content %}
     <div class="container">
         <h1 class="py-3">Форма связи</h1>
-    {% with messages = get_flashed_messages() %}
+{% with messages = get_flashed_messages() %}
   {% if messages %}
     <div class="flashes py-3">
     {% for message in messages %}
@@ -21,19 +21,31 @@
 {% endwith %}
       <!-- Ошибки сообщений -->
     {% for message in form.name.errors %}
-      <div class="flash alert alert-danger">{{ message }}</div>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>{{ message }}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
     {% endfor %}
 
    {% for message in form.email.errors %}
-      <div class="flash alert alert-danger">{{ message }}</div>
+   <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{ message }}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
    {% endfor %}
 
    {% for message in form.subject.errors %}
-      <div class="flash alert alert-danger">{{ message }}</div>
+   <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{ message }}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
    {% endfor %}
 
    {% for message in form.message.errors %}
-      <div class="flash alert alert-danger">{{ message }}</div>
+   <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>{{ message }}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
    {% endfor %}
 
         <h1>{{ title }}</h1>

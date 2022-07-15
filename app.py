@@ -31,6 +31,7 @@ csrf = CSRFProtect()
 def create_app(config_class=Config):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(config_class)
+    db.init_app(app)
     migrate.init_app(app, db)
     mail.init_app(app)
     csrf.init_app(app)
@@ -39,7 +40,6 @@ def create_app(config_class=Config):
     # def init_db(app, db):
     #     db.create_all()
     # end for postgres data base    
-    db.init_app(app)
     app.register_blueprint(homeapp)
     app.register_blueprint(profile)
     app.register_blueprint(contacts)
