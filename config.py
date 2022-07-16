@@ -35,7 +35,7 @@ class Config(object):
     MAIL_USE_SSL=False
     MAIL_USE_TLS=True
     MAIL_DEBUG = True
-    MAIL_DEFAULT_SENDER = 'demo@test.ru'
+    # MAIL_DEFAULT_SENDER = 'demo@test.ru'
     MAIL_SERVER=os.environ.get("MAIL_SERVER")
     MAIL_PORT=os.environ.get("MAIL_PORT")
     MAIL_USERNAME=os.environ.get("MAIL_USERNAME")

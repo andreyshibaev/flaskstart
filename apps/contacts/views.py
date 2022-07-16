@@ -14,8 +14,8 @@ def show_contact_form():
 			flash('Все поля обязательны!')
 			return render_template('contacts.html', form=form)
 		else:
-			msg = Message(form.subject.data, sender='webmaster@sibchar.ru', recipients=['webmaster@sibchar.ru'])
-			msg.body = """От: %s\n%s\nТекст сообщения:\n%s"""%(form.name.data, form.email.data, form.message.data)
+			msg = Message(form.subject.data, sender=form.email.data, recipients=['webmaster@sibchar.ru'])
+			msg.body = """От: %s\nПочта: %s\nТекст сообщения:\n%s"""%(form.name.data, form.email.data, form.message.data)
 			mail.send(msg)
 			flash('Ваше сообщение доставлено!')
 			return redirect(url_for('contacts.show_contact_form'))
