@@ -12,11 +12,14 @@ from flask_security import Security, SQLAlchemyUserDatastore, hash_password
 from flask_babelex import Babel
 from flask_mail import Mail
 # for admin
+from flask_admin.contrib.sqla import ModelView
 from flask_admin import Admin
 from apps.profile.admin import UserView, RoleView
 from apps.profile.models import User, Role
 from apps.profile.views import AdminView
 from flask_wtf.csrf import CSRFProtect
+from apps.homeapp.models import Slider
+from apps.homeapp import models
 from apps.profile import models
 
 # from flask_postgres import init_db_callback
@@ -46,6 +49,7 @@ def create_app(config_class=Config):
     admin = Admin(app, name='Управление сайтом', template_mode='bootstrap4', index_view=AdminView())
     admin.add_view(UserView(User, db.session))
     admin.add_view(RoleView(Role, db.session))
+    admin.add_view(ModelView(Slider, db.session))
     user_datastore = SQLAlchemyUserDatastore(db, User, Role)
     security = Security(app, user_datastore)
     babel = Babel(app)

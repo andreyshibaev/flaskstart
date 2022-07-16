@@ -21,15 +21,3 @@ def show_contact_form():
 			return redirect(url_for('contacts.show_contact_form'))
 	else:
 		return render_template('contacts.html', form=form)
-
-	# if request.method == 'POST':
-	# 	if form.validate == False:
-	# 		flash('Все поля обязательны!')
-	# 		return render_template('contacts.html', form=form, success=True)
-	# 	else:
-	# 		msg = Message(form.subject.data, sender='webmaster@sibchar.ru', recipients=['webmaster@sibchar.ru'])
-	# 		msg.body = """От: %s\n%s\nТекст сообщения:\n%s"""%(form.name.data, form.email.data, form.message.data)
-	# 		mail.send(msg)
-	# 		flash('Ваше сообщение доставлено!')
-	# 		return redirect(url_for('contacts.show_contact_form'))
-	# return render_template('contacts.html', form=form)
